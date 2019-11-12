@@ -153,7 +153,7 @@ const processContains = (ele, arr, cb) => cb(arr.includes(ele));
 */
 function processDuplicateFree(arr, cb) {
   let jeff = arr.filter((ele, i) => arr.indexOf(ele) === i);
-  cb(jeff);
+  return cb(jeff);
 }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -261,9 +261,10 @@ function tallyUpDonations(arr) {
 */
 function counterMaker() {
   // BROKEN CODE STARTS
-  let count = 0;
-  function counter() {
-    return count ++;
+  let count = -1;
+  return function counter() {
+     count ++;
+     return count;
   }
   // BROKEN CODE ENDS
 }
@@ -290,6 +291,15 @@ function counterMaker() {
 */
 function counterMakerWithLimit(/* CODE HERE */) {
   /* CODE HERE */
+  let count = -1;
+  return function counter() {
+     if(count > 2){
+       count = 0;
+       return count;
+     }
+     count ++;
+     return count;
+  }
 }
 
 /////////////// END OF CHALLENGE ///////////////
