@@ -175,10 +175,9 @@ function processDuplicateFree(arr, cb) {
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
   function getFullNames(arr) {
-    arr.forEach(function (v, i, arr){
-      arr[i] = `${v.last_name}, ${v.first_name}`;
-    })
-    return arr;
+    let arr2 = [];
+    arr.forEach(r => arr2.push(`${r.last_name}, ${r.first_name}`));
+    return arr2;
   }
   //returns correct set of data but fails test formatted as 'getFullNames(arr)[0]'
   //passes all tests on replit
@@ -203,6 +202,8 @@ function firstNamesAllCaps(arr) {
   return res;
 }
 
+//error says that it cant utilize the touppercase function on undefined, however the output on repl it has no undefined elements
+
 /**
  * ### Challenge `getRunnersByTShirtSize`
  * 
@@ -223,6 +224,8 @@ function getRunnersByTShirtSize(arr, str) {
   return res;
 }
 
+//error says that its length is 0, in repl it length of returned array is expected output ie 11
+
 /**
  * ### Challenge `tallyUpDonations`
  * 
@@ -234,7 +237,10 @@ function getRunnersByTShirtSize(arr, str) {
  * @returns a number which is the sum of the donations by all runners.
 */
 function tallyUpDonations(arr) {
-  /* CODE HERE */
+  let res = arr.reduce(function(total, current){
+    return total + current.donation;
+  }, 0);
+  return res;
 }
 
 /////////////// CLOSURES ///////////////
@@ -257,7 +263,7 @@ function counterMaker() {
   // BROKEN CODE STARTS
   let count = 0;
   function counter() {
-    count ++;
+    return count ++;
   }
   // BROKEN CODE ENDS
 }
