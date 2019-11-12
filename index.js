@@ -151,7 +151,7 @@ const processContains = (ele, arr, cb) => cb(arr.includes(ele));
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
 */
-function processDuplicateFree(arr, cb) {
+const processDuplicateFree = (arr, cb) => {
   let jeff = arr.filter((ele, i) => arr.indexOf(ele) === i);
   return cb(jeff);
 }
@@ -174,13 +174,12 @@ function processDuplicateFree(arr, cb) {
  * @returns an array with all the runners' full names in the following format: "Smith, John".
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
-  function getFullNames(arr) {
+  const getFullNames = arr => {
     let arr2 = [];
     arr.forEach(r => arr2.push(`${r.last_name}, ${r.first_name}`));
     return arr2;
   }
-  //returns correct set of data but fails test formatted as 'getFullNames(arr)[0]'
-  //passes all tests on replit
+
 
 
 /**
@@ -195,10 +194,8 @@ function processDuplicateFree(arr, cb) {
  * @returns an array with all the runners' first names in ALL CAPS.
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
-function firstNamesAllCaps(arr) {
-  let res = arr.map(function (v){
-    return v.first_name.toUpperCase();
-  })
+const firstNamesAllCaps = arr => {
+  let res = arr.map(v => {return v.first_name.toUpperCase()});
   return res;
 }
 
@@ -217,14 +214,11 @@ function firstNamesAllCaps(arr) {
  * @returns an array containing only the runners that use the given `tShirtSize`.
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
-function getRunnersByTShirtSize(arr, str) {
-  let res = arr.filter(function (v){
-    return v.shirt_size === str;
-  })
+const getRunnersByTShirtSize = (arr, str) => {
+  let res = arr.filter(v => {return v.shirt_size === str});
   return res;
 }
 
-//error says that its length is 0, in repl it length of returned array is expected output ie 11
 
 /**
  * ### Challenge `tallyUpDonations`
@@ -236,10 +230,8 @@ function getRunnersByTShirtSize(arr, str) {
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
 */
-function tallyUpDonations(arr) {
-  let res = arr.reduce(function(total, current){
-    return total + current.donation;
-  }, 0);
+const tallyUpDonations = arr => {
+  let res = arr.reduce((total, val) => total + val.donation, 0);
   return res;
 }
 
@@ -289,7 +281,7 @@ function counterMaker() {
  * counter() // should return 0
  * etc
 */
-function counterMakerWithLimit(/* CODE HERE */) {
+function counterMakerWithLimit() {
   /* CODE HERE */
   let count = -1;
   return function counter() {
